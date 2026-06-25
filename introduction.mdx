@@ -1,0 +1,41 @@
+---
+title: "Drift: Probability-Based Financial Goal Simulation"
+sidebarTitle: "Introduction"
+description: "Drift runs 100,000 Monte Carlo simulations against your real bank data to calculate your probability of hitting any financial goal."
+---
+
+Drift replaces the single-point guesses of traditional budgeting apps with a full probability distribution. Connect your bank, describe a goal in plain English, and Drift runs 100,000 Monte Carlo simulations—each one modeling a plausible future shaped by income swings, inflation, emergencies, market returns, and debt—to tell you the exact odds you'll get there. Whether you're saving for a house, paying off loans, or building an emergency fund, Drift turns "I think I can" into a number you can act on.
+
+## Key capabilities
+
+<CardGroup cols={2}>
+  <Card title="Monte Carlo Engine" icon="chart-mixed">
+    100,000 vectorized simulations per goal, powered by NumPy and Python multiprocessing. Results land in roughly 500 ms and include a full percentile distribution—not just a median.
+  </Card>
+  <Card title="Real Bank Data" icon="building-columns">
+    Connect your accounts through Plaid (real banks) or the Capital One Nessie sandbox. Drift reads your actual balances, spending history, credit card APRs, and loan schedules—no manual entry required.
+  </Card>
+  <Card title="AI Goal Parsing" icon="wand-magic-sparkles">
+    Type or speak a goal like "Save $50,000 for a house in 3 years" and Google Gemini converts it into exact simulation parameters: target amount, timeline, and goal type.
+  </Card>
+  <Card title="AI Voice Advisor" icon="microphone">
+    After your simulation completes, a Gemini-powered advisor explains your results in plain language and answers follow-up questions—delivered as audio via ElevenLabs text-to-speech.
+  </Card>
+</CardGroup>
+
+## How Drift is different
+
+<Note>
+  Most financial apps show you a single projected balance. Drift shows you the **distribution of thousands of possible futures**—so you understand not just what's likely, but how much risk you're carrying.
+
+  - **Account-aware modeling:** when you connect via Plaid, Drift models each credit card with its actual APR and each loan with its real amortization schedule, not generic averages.
+  - **Automatic sensitivity analysis:** after every simulation, Drift tests how your probability changes if income shifts ±10%, spending shifts ±10%, or you extend your timeline by six or twelve months.
+  - **What-if scenarios:** explore targeted changes—like cutting a spending category or taking a second income—and see the revised probability instantly.
+</Note>
+
+## Products
+
+Drift is part of a small suite of AI-powered tools:
+
+- **Drift** — Monte Carlo financial goal simulation with real bank data, AI goal parsing, and a voice advisor. That's what you're reading about now.
+- **GitaChat** — A semantic search and conversational interface for the Bhagavad Gita, letting you explore verses and themes through natural-language questions.

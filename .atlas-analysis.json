@@ -1,0 +1,111 @@
+{
+  "projectType": "saas",
+  "projectName": "Drift",
+  "projectDescription": "Drift is a Monte Carlo financial simulation platform that shows you the probability of hitting your financial goals using real bank data and AI-powered insights.",
+  "theme": "luma",
+  "primaryColor": "#54545c",
+  "lightColor": null,
+  "darkColor": null,
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Drift",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "how-it-works"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/simulation",
+              "features/goal-setting",
+              "features/what-if",
+              "features/ai-advisor"
+            ]
+          },
+          {
+            "group": "Bank Connections",
+            "pages": [
+              "integrations/plaid",
+              "integrations/nessie"
+            ]
+          },
+          {
+            "group": "Configuration",
+            "pages": [
+              "configuration/environment",
+              "configuration/risk-profiles"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "support/faq",
+              "support/troubleshooting"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "GitaChat",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "gitachat/introduction",
+              "gitachat/quickstart"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "gitachat/search",
+              "gitachat/daily-verse",
+              "gitachat/bookmarks",
+              "gitachat/commentary"
+            ]
+          },
+          {
+            "group": "Account",
+            "pages": [
+              "gitachat/settings",
+              "gitachat/email-subscriptions"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "100,000-run Monte Carlo simulation engine with NumPy vectorization",
+    "Real bank data integration via Plaid and Capital One Nessie",
+    "AI-powered goal parsing via Google Gemini (voice or text input)",
+    "Voice advisor powered by ElevenLabs TTS",
+    "What-if scenario analysis with interactive sliders",
+    "Sensitivity analysis showing impact of income and spending changes",
+    "Risk-profile-adjusted market return modeling (low/medium/high)",
+    "Account-aware simulation with per-card APR and loan amortization",
+    "GitaChat semantic Bhagavad Gita search with AI commentary",
+    "Daily verse delivery and bookmarking for GitaChat"
+  ],
+  "publicApiSurface": [
+    "POST /simulate — run a Monte Carlo simulation",
+    "POST /simulate-enhanced — account-aware simulation with Plaid data",
+    "POST /sensitivity — sensitivity analysis on income/spending",
+    "POST /whatif — what-if scenario analysis",
+    "POST /ai/narrative — AI narrative generation for results",
+    "POST /llm/parse-goal — parse a natural-language financial goal",
+    "GET /nessie/accounts — fetch accounts from Nessie sandbox",
+    "POST /plaid/link — initiate Plaid Link flow",
+    "GET /plaid/accounts — fetch connected Plaid accounts",
+    "POST /api (GitaChat) — semantic verse search",
+    "POST /api/verse (GitaChat) — fetch specific verse",
+    "GET /api/daily (GitaChat) — daily verse",
+    "POST /api/bookmarks (GitaChat) — save/fetch bookmarks"
+  ]
+}

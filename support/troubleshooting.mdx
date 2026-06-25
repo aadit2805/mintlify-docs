@@ -1,0 +1,107 @@
+---
+title: "Troubleshooting Common Issues in Drift"
+sidebarTitle: "Troubleshooting"
+description: "Fix common problems in Drift including bank connection errors, simulation failures, goal parsing issues, and AI advisor problems."
+---
+
+When something is not working as expected in Drift, most issues fall into one of four categories: bank connection problems, simulation failures, goal parsing errors, or AI advisor issues. Work through the relevant section below to resolve your issue. If the problem persists after following these steps, contact Drift support from the dashboard.
+
+---
+
+## Bank Connection Issues
+
+### Plaid link fails to open
+
+If clicking **Connect a bank** opens nothing or the Plaid modal closes immediately:
+
+1. Refresh the page and try again.
+2. Clear your browser cache and cookies, then reload.
+3. Disable browser extensions — particularly ad blockers, script blockers, or privacy extensions — that may be preventing the Plaid popup from loading.
+4. Try a different browser (Chrome or Firefox are recommended).
+
+<Warning>
+  If you experience persistent issues with your Plaid connection, try unlinking and re-linking your accounts from the Accounts section of the dashboard. Unlinking does not delete your simulation history.
+</Warning>
+
+### Account data not loading after connection
+
+If you successfully linked an account but your balances or transactions are not appearing:
+
+- Your bank may require periodic re-authentication. Open the **Accounts** section of the dashboard and look for a **Re-authenticate** prompt next to the affected account.
+- Re-link the account by unlinking it and going through the Plaid connection flow again. Your session token may have expired.
+- Some banks have a delay (up to a few minutes) before Plaid can fetch data after a fresh connection. Wait a moment and trigger a manual sync.
+
+### Missing accounts after connection
+
+If only some of your accounts appear after linking:
+
+- Certain account types — such as investment accounts, joint accounts, or business accounts — require you to explicitly grant permission during the Plaid link flow. Unlink and re-link your bank, and make sure to select all account types you want Drift to include when prompted.
+- Some banks restrict third-party read access for certain account subtypes. Check your bank's settings for third-party data sharing.
+
+---
+
+## Simulation Issues
+
+### Simulation is stuck on loading
+
+The simulation engine occasionally takes a moment to start, especially after a period of inactivity.
+
+1. Wait 30 seconds and check if results appear.
+2. If the spinner is still running after 30 seconds, reload the page — your inputs are saved locally and will not be lost.
+3. Try re-running the simulation from the goal screen. If it fails a second time, check your internet connection and try again.
+
+### Success probability is unrealistically low or high
+
+If your success probability is near 0% or near 100% and that feels wrong, check the following:
+
+- **Goal amount and timeline:** A very large goal over a very short timeline will naturally produce a near-0% probability. For example, saving $1,000,000 in 6 months is statistically near-impossible on a typical income. Try adjusting either the target amount or the timeline to something more realistic.
+- **Income and spending inputs:** If your income is entered as significantly lower than it actually is, or your spending is inflated, the simulation will reflect that. Re-sync your account data or manually verify the values shown on the results page under **Account analysis & assumptions**.
+- **Risk profile:** A very conservative risk profile applied to a long-horizon goal can suppress the probability. Consider switching to Medium or High risk for goals with timelines over 5 years.
+
+### Simulation results differ slightly between runs
+
+This is expected behavior. Monte Carlo simulations are inherently random — each run generates a fresh set of 100,000 random scenarios. Small differences in success probability (typically within 1–2 percentage points) between runs are normal and not a sign of a bug.
+
+Results converge and stabilize at the 100,000-simulation scale (Full mode). If you are seeing larger swings, make sure you are using **Full** mode rather than **Quick** mode in your simulation preferences.
+
+---
+
+## Goal Parsing Issues
+
+### My goal was not understood correctly
+
+Drift's AI parser attempts to extract a target amount, timeline, and goal type from natural language. If it misunderstands your goal:
+
+- Try rewording with an explicit dollar amount and timeframe. For example, instead of *"I want to save up for a car,"* say **"Save $20,000 in 2 years."**
+- Avoid ambiguous timeframes like *"soon"* or *"next year."* Specific months or years work best.
+- If the parsed goal shown before you confirm looks wrong, tap **Edit** to correct the target amount or timeline before running the simulation.
+
+### Voice input is not working
+
+If the microphone button does not respond or voice input never starts:
+
+1. Check that your browser has microphone permission for the Drift domain. In Chrome, open **Settings → Privacy and Security → Site Settings → Microphone** and confirm Drift is allowed.
+2. Reload the page — some browsers require a fresh page load after granting microphone permissions.
+3. Make sure no other application is using your microphone exclusively (e.g., a video call running in the background).
+4. If voice input continues to fail, use the text input field instead. It accepts the same natural language goal descriptions.
+
+---
+
+## AI Advisor Issues
+
+### The advisor is not responding
+
+The AI advisor (available on your results page) may occasionally be rate-limited under high load.
+
+- Wait a few seconds and ask your question again.
+- If the advisor is unresponsive for more than 30 seconds, reload the results page. Your simulation results are stored locally and will reload automatically.
+- Check that your browser is not blocking JavaScript from the Drift domain, which is required for the advisor to initialize.
+
+### Advisor voice is not playing
+
+If you can see the advisor's text response but no audio plays:
+
+1. Check your device volume — make sure it is not muted at the system or browser level.
+2. In your browser settings, confirm that Drift has permission to play audio. Some browsers block autoplay by default.
+3. Click or tap the audio play button manually if it appears — some browsers require a direct user interaction before audio can start.
+4. If audio continues to fail, the text response contains the same information. All advisor output is shown in text alongside the audio.

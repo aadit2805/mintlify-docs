@@ -1,0 +1,61 @@
+---
+title: "What-If Scenarios: Adjust Your Financial Plan in Drift"
+sidebarTitle: "What-If"
+description: "Use Drift's what-if sliders to model how changes in income, spending, or savings rate affect your probability of reaching a financial goal."
+---
+
+Your first simulation result is a starting point, not a verdict. The What-If panel lets you push individual variables — income, spending, timeline, risk tolerance — and instantly see how each change shifts your probability of success. Instead of wondering whether a raise or a spending cut matters more, you get the exact answer expressed as a probability change, ranked by impact.
+
+<Info>
+  What-if scenarios run the same 100,000-simulation engine as your original simulation. Every probability figure in the panel reflects a full Monte Carlo run against your adjusted parameters — not an estimate or a linear approximation.
+</Info>
+
+## Available adjustments
+
+Drift tests the following scenario types automatically after every simulation, and surfaces them ranked by the size of their probability impact.
+
+| Adjustment | What it models |
+|---|---|
+| **Income +10%** | Monthly income increased by 10% — equivalent to a raise, a new client, or a side income stream |
+| **Income −10%** | Monthly income reduced by 10% — models the effect of a pay cut or reduced hours |
+| **Spending −10%** | Monthly spending reduced by 10% — the result of trimming discretionary categories |
+| **Spending −20%** | Monthly spending reduced by 20% — a more aggressive budget tightening |
+| **Spending +10%** | Monthly spending increased by 10% — shows the cost of lifestyle creep on your plan |
+| **Timeline +6 months** | Goal deadline extended by 6 months — more time compounds savings and investment returns |
+| **Timeline +12 months** | Goal deadline extended by 12 months — the largest timeline extension Drift tests by default |
+
+When you connect Plaid-linked accounts, Drift also generates **category-level scenarios** based on your actual spending data. For example: *"Cut Dining by 35% (~$280/mo)"* with a projected probability impact calculated against your real spending mix.
+
+## How to use what-if
+
+<Steps>
+  <Step title="Run your initial simulation">
+    Complete the goal-setting flow and wait for the simulation to finish. Your baseline success probability and percentile outcomes appear on the results page.
+  </Step>
+  <Step title="Open the What-If Analysis panel">
+    Scroll down on the results page to the **What-If Analysis** section. Drift populates it automatically — no extra action needed.
+  </Step>
+  <Step title="Read the ranked scenarios">
+    The table lists every scenario alongside the baseline probability, the adjusted probability, and the percentage-point impact. Scenarios are sorted from highest to lowest impact so the most effective lever is always at the top.
+  </Step>
+  <Step title="Act on the highest-impact move">
+    Check the **Highest-impact moves** cards beneath the table. These highlight the top two scenarios from your analysis and are the fastest way to identify a single actionable change — whether that's cutting a specific spending category or extending your timeline.
+  </Step>
+</Steps>
+
+## Reading the results
+
+The What-If table always shows your **current plan** as the baseline row, so every other scenario is directly comparable.
+
+| Column | What it shows |
+|---|---|
+| **Scenario** | A plain-English description of the change being modeled |
+| **Change** | The specific parameter adjustment (e.g., `-10% total spending`) |
+| **Probability** | Your new success probability if you make this change |
+| **Impact** | The percentage-point difference from your baseline (green = improvement, red = decline) |
+
+A positive impact badge — for example, `+14%` — means making that change raises your success probability by 14 percentage points. If your baseline is 58%, that adjustment takes you to 72%.
+
+<Tip>
+  Compare the income and spending scenarios side by side. In most plans, one of the two dominates — meaning there's a clear answer to "should I earn more or spend less?" that's specific to your numbers.
+</Tip>

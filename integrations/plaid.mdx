@@ -1,0 +1,77 @@
+---
+title: "Connect Your Bank with Plaid for Real-Data Simulations"
+sidebarTitle: "Plaid"
+description: "Link your real bank accounts to Drift through Plaid to run simulations against your actual income, spending, balances, credit cards, and loans."
+---
+
+Connecting your bank through Plaid gives Drift access to your real financial picture — your actual balances, 90 days of categorized transactions, credit card terms, and loan details. Instead of estimating your income or guessing at monthly expenses, Drift reads the numbers directly from your accounts and uses them to calibrate every variable in your Monte Carlo simulation. The result is a probability estimate grounded in how you actually spend and save, not a generic model.
+
+## Supported Account Types
+
+Drift imports data from four categories of accounts. You can link any combination of them — the more accounts you connect, the more accurately the simulation models your complete financial situation.
+
+| Account type | What Drift reads |
+|---|---|
+| **Depository** — checking and savings | Current balance, available balance |
+| **Credit cards** | Current balance, credit limit, APR, minimum payment |
+| **Loans** — student, auto, mortgage, personal | Outstanding balance, interest rate, monthly payment |
+| **Investment accounts** — brokerage, 401k, IRA | Current value, holdings, asset allocation |
+
+## How to Connect
+
+<Steps>
+  <Step title="Open the login screen and click 'Connect Bank'">
+    On the Drift sign-in page, select the **Connect Bank** tab. Then click the **Connect with Plaid** button to open the Plaid Link interface.
+  </Step>
+  <Step title="Select your bank">
+    Search for and select your financial institution from Plaid's list of supported banks and credit unions.
+  </Step>
+  <Step title="Authenticate with your bank">
+    Enter your bank login credentials directly in the Plaid interface. Drift never receives or stores your username, password, or any bank credentials — Plaid handles authentication entirely.
+  </Step>
+  <Step title="Drift imports your account data">
+    Once you authenticate, Drift fetches your account balances, liability details, investment holdings, and the last 90 days of transactions. This import happens automatically in the background.
+  </Step>
+  <Step title="Review your dashboard">
+    Return to the Drift dashboard to see your complete financial overview: net worth, monthly income, monthly cash flow, linked account balances, spending by category, and total debt breakdown.
+  </Step>
+</Steps>
+
+## What Drift Reads from Your Accounts
+
+Drift uses your imported data to derive the parameters that drive your simulation. None of this requires manual input on your part.
+
+<CardGroup cols={2}>
+  <Card title="Income detection" icon="arrow-trend-up">
+    Drift scans your 90-day transaction history for recurring large deposits — payroll direct deposits, freelance payments, or other regular income. It identifies the amount, detects whether you're paid weekly, biweekly, or monthly, and calculates a stability score based on how consistent those deposit amounts are.
+  </Card>
+  <Card title="Spending analysis" icon="receipt">
+    Every outgoing transaction over the 90-day window is categorized and totaled. Drift separates recurring fixed expenses (merchants that appear two or more times, like rent or subscriptions) from variable day-to-day spending, giving the simulation a realistic breakdown of how your money flows out each month.
+  </Card>
+  <Card title="Income volatility" icon="chart-line">
+    If your paychecks vary — for example, because of overtime, bonuses, or variable hours — Drift measures that variance and uses it as the income volatility input in the simulation. A stable salaried income produces a low volatility score; irregular freelance income produces a higher one.
+  </Card>
+  <Card title="Spending volatility" icon="wave-sine">
+    Drift calculates the day-to-day variance in your spending to model how unpredictable your expenses are. This volatility parameter shapes how widely the simulation's monthly expense draws can deviate from your average.
+  </Card>
+  <Card title="Debt modeling" icon="credit-card">
+    Each linked credit card is modeled individually using its real APR and minimum payment. Each loan — student, auto, mortgage, or personal — contributes its current balance, interest rate, and monthly payment amount directly to the simulation's debt service calculations.
+  </Card>
+  <Card title="Investment allocation" icon="chart-pie">
+    For linked investment accounts, Drift reads your holdings and classifies each position as stocks, bonds, cash, or other. It then computes a weighted average allocation across all accounts and uses that mix to derive expected return and volatility parameters for your simulation.
+  </Card>
+</CardGroup>
+
+## Data Privacy
+
+<Info>
+  Drift uses Plaid's read-only access token. Drift cannot initiate transactions, transfers, or payments on your behalf — ever. Your bank credentials are entered directly into Plaid's interface and are never shared with or stored by Drift.
+</Info>
+
+Drift stores account metadata (account type, name, balance, and derived financial parameters like monthly income estimate and spending volatility) to power your dashboard and simulations. Drift does **not** store raw transaction data. Individual transactions are processed in memory to extract income and spending patterns, then discarded — only the derived metrics are retained.
+
+---
+
+<Note>
+  Simulations run with Plaid-connected accounts are significantly more accurate than the manual-input baseline. When Drift knows your real income stability, actual spending variance, and exact debt terms, the Monte Carlo model reflects your specific financial situation rather than a generic one.
+</Note>

@@ -1,0 +1,75 @@
+---
+title: "Monte Carlo Simulation: How Drift Calculates Your Odds"
+sidebarTitle: "Simulation"
+description: "Drift runs 100,000 Monte Carlo simulations per goal, modeling income, spending, inflation, market returns, and life events to calculate your success probability."
+---
+
+Every financial plan looks reasonable on a spreadsheet — but real life doesn't follow a straight line. Drift runs 100,000 independent simulations of your future, each one playing out a slightly different version of your income, spending, market returns, and unexpected events. By aggregating those outcomes, Drift tells you not just what *might* happen, but how likely each scenario actually is. The more simulations, the tighter the probability estimate — which is why 100,000 runs matters far more than a single projection ever could.
+
+## What gets modeled
+
+Each simulation walks month-by-month through your full financial timeline, applying a separate set of randomly sampled variables to every run.
+
+| Factor | Detail |
+|---|---|
+| **Monthly income** | Base income with ±5% monthly variance. Annual raises sampled from a 3% mean (every 12 months). Semi-annual promotion events at 15% probability, averaging an 8% raise. |
+| **Monthly spending** | Base spending with ±15% monthly variance, compounded by inflation each month (2.5% annual rate, ±1% volatility). |
+| **Emergency events** | 8% monthly probability of an unplanned expense between $500 and $3,000 — modeled as a random draw each month across all 100,000 runs. |
+| **Investment returns** | Risk-adjusted annual returns applied to your investable balance (assets above a 6-month emergency fund reserve). Low risk: 4% mean / 8% std. Medium: 7% / 15%. High: 10% / 20%. |
+| **Per-account modeling** | When you connect via Plaid, each credit card accrues monthly interest at its actual APR and pays its minimum payment every month. Each loan follows its amortization schedule — principal and interest calculated separately per run. |
+
+<Note>
+  Investment returns are only applied to the portion of your balance that exceeds a six-month spending reserve. Drift never models returns on money you'd need for emergencies.
+</Note>
+
+## Results you receive
+
+After all 100,000 runs complete, Drift aggregates the final balances and computes the following:
+
+<CardGroup cols={3}>
+  <Card title="Success probability" icon="bullseye-arrow">
+    The percentage of runs in which your ending balance meets or exceeds your goal amount. A 72% success probability means 72,000 of 100,000 simulated futures hit your target.
+  </Card>
+  <Card title="Percentile outcomes" icon="chart-line">
+    Five markers across the distribution — p10, p25, p50, p75, and p90 — showing your pessimistic, expected, and optimistic ending balances at the goal deadline.
+  </Card>
+  <Card title="Monthly projection chart" icon="chart-bar">
+    A visual distribution of all final balances plotted against your goal amount, so you can see the full shape of outcomes — not just an average.
+  </Card>
+</CardGroup>
+
+### Percentile reference
+
+| Percentile | What it means |
+|---|---|
+| **p10 — Pessimistic** | Only 10% of runs ended lower than this. A realistic bad-case scenario. |
+| **p25** | The lower quarter of outcomes. Still a plausible result if conditions are unfavorable. |
+| **p50 — Expected** | The median outcome. Half of all runs finished above this, half below. |
+| **p75** | A favorable outcome; achievable if income growth or returns run above average. |
+| **p90 — Optimistic** | Only 10% of runs ended higher. A realistic best-case scenario. |
+
+## Sensitivity analysis
+
+Immediately after your main simulation finishes, Drift automatically re-runs the engine with small parameter changes to identify which levers have the biggest impact on your odds.
+
+The following seven scenarios are tested in every analysis:
+
+| Scenario | What changes |
+|---|---|
+| Income +10% | Monthly income multiplied by 1.1 |
+| Income −10% | Monthly income multiplied by 0.9 |
+| Spending −10% | Monthly spending multiplied by 0.9 |
+| Spending −20% | Monthly spending multiplied by 0.8 |
+| Spending +10% | Monthly spending multiplied by 1.1 |
+| Timeline +6 months | Goal deadline extended by 6 months |
+| Timeline +12 months | Goal deadline extended by 12 months |
+
+Drift ranks these by absolute probability impact and surfaces the highest-impact moves directly on your results page. If reducing spending by 10% improves your odds more than any other change, that recommendation appears first.
+
+<Tip>
+  The sensitivity table is the fastest way to answer "what's the single most effective thing I can do?" — check the **Impact** column and act on the top result.
+</Tip>
+
+## Performance
+
+Drift uses NumPy vectorized math and distributes work across parallel CPU workers, so all 100,000 runs complete in approximately **500 milliseconds** on a standard server — fast enough that you can iterate on scenarios without waiting.

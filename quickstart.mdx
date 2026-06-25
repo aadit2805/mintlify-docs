@@ -1,47 +1,61 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with Drift in Under 5 Minutes"
+sidebarTitle: "Quickstart"
+description: "Learn how to connect your bank, set a financial goal, and run your first Monte Carlo simulation with Drift in five minutes or less."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+By the end of this guide you'll have a live simulation running against your real financial data. You'll see your success probability, a full percentile distribution of possible outcomes, and an automatic sensitivity analysis showing which levers matter most—all from a single goal you describe in plain English.
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Visit Drift and log in">
+    Open Drift in your browser and navigate to the login page. You have two options:
 
-    ```bash
-    npm install your-package
-    ```
+    - **Plaid login** — links your real bank accounts. Drift uses Plaid's secure OAuth flow so your credentials never touch Drift's servers.
+    - **Nessie sandbox login** — uses Capital One's Nessie API with pre-seeded demo data. Choose this if you want to explore Drift without connecting a live bank.
+
+    After authenticating, Drift stores a session token locally and redirects you to the goal-setting screen.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
 
-    ```bash
-    your-cli init
-    ```
+  <Step title="Connect your bank">
+    If you chose Plaid, the Plaid Link modal opens automatically. Select your institution, complete the OAuth flow, and Drift retrieves your checking and savings balances, credit card details (including APRs and minimum payments), loan schedules, and spending history.
+
+    If you chose Nessie, your sandbox accounts are loaded immediately—no extra steps needed.
+
+    <Tip>
+      The more account types you connect, the more accurate your simulation. Credit card APRs and loan amortization schedules have a measurable effect on your projected balances.
+    </Tip>
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
 
-    ```bash
-    your-cli start
-    ```
+  <Step title="Set your goal">
+    On the goal screen, enter your age, risk tolerance (low / medium / high), and your goal. You can type or speak it:
+
+    > *"Save $50,000 for a house down payment in 3 years"*
+
+    Gemini AI parses your natural-language input into a structured goal: target amount, timeline in months, and goal type. A confidence score appears alongside the parsed result—review it and adjust if needed before continuing.
+  </Step>
+
+  <Step title="Run the simulation">
+    Click **Run Simulation**. The Python engine spins up 100,000 independent Monte Carlo runs distributed across CPU cores. Each run models:
+
+    - Monthly income with variance, annual raises, and semi-annual promotion chances
+    - Monthly spending with inflation and category-level volatility
+    - Random emergency expenses (8% monthly probability, $500–$3,000 each)
+    - Risk-adjusted market returns on your investable balance
+
+    A real-time progress bar tracks completion. The full simulation finishes in approximately 500 ms.
+  </Step>
+
+  <Step title="Review your results">
+    The results page displays:
+
+    - **Success probability** — the percentage of simulations where you hit your goal
+    - **Percentile bands** — your balance at the 10th, 25th, 50th, 75th, and 90th percentile at the target date
+    - **Sensitivity analysis** — ranked table showing how ±10% income, ±10% spending, or +6/+12 months changes your odds
+    - **What-if scenarios** — interactive sliders to explore alternative futures
+    - **AI voice briefing** — tap the play button to hear Gemini explain your results and answer follow-up questions via voice
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
-
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+<Note>
+  Ready to go deeper? See [How It Works](/how-it-works) for a full breakdown of the simulation engine, account-aware modeling, and sensitivity analysis methodology.
+</Note>

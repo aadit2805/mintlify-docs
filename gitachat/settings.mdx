@@ -1,0 +1,64 @@
+---
+title: "Manage Your GitaChat Account and Preferences"
+sidebarTitle: "Settings"
+description: "Update your GitaChat profile, manage email subscriptions, view your search history, and control your account preferences from the Settings page."
+---
+
+The Settings page is your central place for managing everything about your GitaChat experience — your account, your email subscription, and your search history. Reach it at any time by navigating to [gitachat.org/settings](https://gitachat.org/settings).
+
+## Account
+
+GitaChat uses **Clerk** for authentication, which means you can sign in securely without GitaChat ever storing your password.
+
+<AccordionGroup>
+  <Accordion title="Signing in">
+    Click **Sign in** from the navigation bar or any page that requires an account. Clerk supports sign-in via email, Google, and other providers. Once signed in, your bookmarks, notes, and search history are tied to your account and sync across devices.
+  </Accordion>
+  <Accordion title="Signing out">
+    Click your profile icon in the navigation bar and select **Sign out**. Your bookmarks and history remain saved in your account and will be waiting when you sign back in.
+  </Accordion>
+</AccordionGroup>
+
+## Search history
+
+GitaChat saves your past searches so you can revisit any verse you found, along with the exact question that led you there.
+
+- Navigate to [gitachat.org/history](https://gitachat.org/history) to view your full search history.
+- Each entry shows the date and time, your original query, and the chapter and verse returned.
+- Click any history entry to re-open the full verse with its commentary, exactly as it appeared when you first found it.
+- To remove all past searches, click **Clear** at the top of the history page and confirm. This action cannot be undone.
+
+<Info>
+  Search history is stored in Supabase and requires a signed-in account. Without signing in, your most recent search is saved temporarily in your browser's local storage but is not persisted long-term.
+</Info>
+
+## Email subscriptions
+
+Manage your daily verse email from the Settings page.
+
+<Steps>
+  <Step title="Open Settings">
+    Go to [gitachat.org/settings](https://gitachat.org/settings).
+  </Step>
+  <Step title="Find the Daily Verse Email section">
+    The **Daily Verse Email** toggle is the primary control. When the toggle is on (saffron), you are subscribed.
+  </Step>
+  <Step title="Set your timezone">
+    When subscribed, a timezone selector appears below the toggle. GitaChat sends emails at **8:00 AM in your selected timezone**. Choose from a list of common timezones, or leave it as your auto-detected local timezone.
+  </Step>
+  <Step title="Unsubscribe">
+    Toggle the switch off to stop receiving daily verse emails immediately.
+  </Step>
+</Steps>
+
+<Tip>
+  If you travel across timezones frequently, update your timezone in Settings to keep receiving emails at 8:00 AM local time wherever you are.
+</Tip>
+
+## Data and privacy
+
+GitaChat stores your search history and bookmarks securely in **Supabase**. Your data is associated with your Clerk user account and is never sold or shared with third parties.
+
+- Your email address (if subscribed) is used only to send the daily verse email.
+- You can delete your search history at any time from the History page.
+- To request full deletion of your account data, contact GitaChat support.

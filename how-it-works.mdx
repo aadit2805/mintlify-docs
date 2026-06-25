@@ -1,0 +1,73 @@
+---
+title: "How Drift's Monte Carlo Simulation Engine Works"
+sidebarTitle: "How It Works"
+description: "Drift runs 100,000 vectorized Monte Carlo simulations modeling income variance, inflation, market returns, and life events to calculate your goal probability."
+---
+
+Drift's core insight is that your financial future isn't a single line on a chart—it's a cloud of possibilities shaped by thousands of interacting variables. To map that cloud, Drift runs 100,000 independent simulations, each one playing out a plausible life path month by month until your goal's deadline. The fraction of paths that reach your target is your success probability. Everything else you see—percentile bands, sensitivity scores, what-if outcomes—flows from the same underlying simulation.
+
+## The simulation engine
+
+Drift's Python engine uses NumPy vectorization and Python's `multiprocessing` module to run all 100,000 simulations in parallel across your available CPU cores, completing in approximately 500 ms.
+
+Each simulation run advances your balance through every month of your goal's timeline, applying these stochastic models at each step:
+
+| Variable | Model |
+|---|---|
+| **Income** | Base income × monthly noise (σ = 5%) + annual raises (μ = 3%, σ = 1.5%) + semi-annual promotion chance (15%, μ = 8% raise) |
+| **Spending** | Base spending × monthly noise (σ = 15%) × cumulative inflation (μ = 2.5%/yr, σ = 1%/yr) |
+| **Emergency events** | 8% monthly probability; uniform random cost between $500 and $3,000 |
+| **Market returns** | Applied only to the investable portion of your balance (above a 6-month emergency fund buffer); risk-adjusted annual mean of 4% (low), 7% (medium), or 10% (high) |
+
+At the end of each run, Drift records your final balance. After all 100,000 runs complete, it calculates your **success probability** (the share of runs that ended at or above your target) and the following **percentile bands**:
+
+- **p10** — your balance in the worst 10% of simulated futures
+- **p25** — the 25th-percentile outcome
+- **p50** — the median, most-likely outcome
+- **p75** — a better-than-average outcome
+- **p90** — your balance in the best 10% of simulated futures
+
+<Info>
+  If the Python engine is unavailable (for example, in a lightweight deployment without Python), Drift falls back to a JavaScript implementation that runs approximately 5,000 simulations instead of 100,000. Results are faster but less statistically precise—treat them as directional estimates rather than high-confidence probabilities.
+</Info>
+
+## Account-aware modeling
+
+When you connect real accounts through Plaid, Drift upgrades from generic estimates to **account-aware simulation**. Instead of lumping all debt into a single line item, the engine models each account individually:
+
+**Credit cards** — Drift loads each card's exact APR and minimum payment. Every simulation month, it accrues interest on the outstanding balance at the card's actual monthly rate, subtracts the minimum payment, and charges the net cost against your cash flow. A card at 24% APR behaves very differently from one at 15%—and that difference compounds over a multi-year timeline.
+
+**Loans** — Each loan (student, auto, mortgage, personal) is tracked with its own balance, interest rate, and fixed monthly payment. The engine runs a standard amortization schedule: each month's payment covers accrued interest first, then reduces principal. As principal shrinks, the share going to interest falls, accurately reflecting how real loan payoff works.
+
+**Investment accounts** — When you hold investment accounts (401(k), IRA, brokerage), Drift reads your actual allocation (stocks / bonds / cash / other) and derives expected return and volatility from historical asset-class averages rather than using a fixed 7% assumption.
+
+This level of detail produces materially more accurate probability estimates than tools that use generic averages—especially if you carry high-APR credit card debt or are mid-way through a large loan.
+
+## Sensitivity analysis
+
+Immediately after the main simulation finishes, Drift automatically runs a battery of **sensitivity scenarios** to identify which factors have the most leverage on your outcome:
+
+| Scenario | What changes |
+|---|---|
+| `income_plus_10` | Monthly income increased by 10% |
+| `income_minus_10` | Monthly income decreased by 10% |
+| `spending_minus_10` | Monthly spending decreased by 10% |
+| `spending_minus_20` | Monthly spending decreased by 20% |
+| `spending_plus_10` | Monthly spending increased by 10% |
+| `timeline_plus_6mo` | Goal deadline extended by 6 months |
+| `timeline_plus_12mo` | Goal deadline extended by 12 months |
+
+Each scenario re-runs the full simulation (100,000 paths) and records the change in success probability relative to your baseline. Drift then ranks the scenarios by absolute impact, labels the most influential factor, and generates plain-English recommendations—for example:
+
+> *"Reducing spending by 10% could improve your success probability by 14% (to 73%)."*
+> *"Extending your timeline by 6 months improves probability to 68%."*
+
+Use the sensitivity table to focus your energy on the changes that actually move the needle.
+
+## AI features
+
+Drift integrates Google Gemini and ElevenLabs at two points in the workflow:
+
+**Goal parsing** — When you type or speak a goal like "Pay off my student loans in 4 years," Gemini parses it into structured parameters (`targetAmount`, `timelineMonths`, `goalType`) and returns a confidence score. Drift displays the parsed result for you to confirm before running the simulation.
+
+**Voice advisor** — After results load, Gemini generates a plain-language narrative that explains your success probability, highlights the most impactful sensitivity factors, and surfaces actionable recommendations. ElevenLabs converts that narrative to audio using a consistent conversational voice. You can also ask follow-up questions in a back-and-forth voice chat—Gemini maintains conversation context and has full access to your simulation results and financial profile while answering.

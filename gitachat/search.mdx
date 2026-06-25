@@ -1,0 +1,75 @@
+---
+title: "Semantic Search: Find Bhagavad Gita Verses by Meaning"
+sidebarTitle: "Search"
+description: "GitaChat uses semantic AI search to match your life question to the most relevant Bhagavad Gita verse — results are ranked by meaning, not keywords."
+---
+
+GitaChat understands what you mean, not just what you type. Instead of scanning for matching words, it compares the meaning of your question against all 700 verses of the Bhagavad Gita using AI embeddings — so asking "How do I stop worrying about things I can't control?" will find verses about equanimity and surrender, even if those exact words never appear in your question.
+
+## How to search
+
+<Steps>
+  <Step title="Type your question">
+    Enter a question, thought, or feeling in the search box on the home page. The placeholder reads *"What is troubling you?"* — treat it as an invitation to be honest and specific.
+  </Step>
+  <Step title="Submit your query">
+    Press **Enter** or click the **Ask** button to begin the search. GitaChat sends your question to the backend and shows a brief "Seeking…" indicator while it works.
+  </Step>
+  <Step title="Read your results">
+    GitaChat returns the single best-matching verse along with its commentary. Scroll down to find up to three related verses that were close matches, giving you broader context.
+  </Step>
+</Steps>
+
+## How search works under the hood
+
+You don't need to understand the mechanics to use GitaChat, but here's what happens when you ask a question:
+
+<AccordionGroup>
+  <Accordion title="Step 1 — Your question becomes a vector">
+    GitaChat converts your question into a high-dimensional numerical representation called an **embedding**. This embedding captures the semantic meaning of what you wrote, not just individual words.
+  </Accordion>
+  <Accordion title="Step 2 — All 700 verses are compared">
+    Every verse in the Bhagavad Gita has been pre-embedded and stored in a vector database (Pinecone). GitaChat computes the similarity between your question's embedding and each verse's embedding, retrieving the top candidates ranked by meaning.
+  </Accordion>
+  <Accordion title="Step 3 — Keyword relevance adds a boost">
+    In addition to semantic similarity, GitaChat applies a lightweight keyword-matching pass. If your query terms appear in the verse translation or commentary, that verse receives a small relevance boost — combining the best of both approaches.
+  </Accordion>
+  <Accordion title="Step 4 — The best match is selected">
+    The verse with the highest combined score becomes your primary result. The next three unique high-scoring verses are surfaced as **Related Verses** below the main result.
+  </Accordion>
+</AccordionGroup>
+
+## Example queries
+
+These suggested prompts appear on the GitaChat home page. Use them as a starting point, or let them inspire your own question:
+
+- "How do I find inner peace?"
+- "What is my purpose in life?"
+- "How to overcome fear?"
+- "What is true happiness?"
+
+Feel free to be more specific — the more your question reflects your actual situation, the more personally relevant the result will feel.
+
+## Search tips
+
+<Tip>
+  Ask a **specific, personal question** for the most relevant results. "How do I stay calm when my colleagues disrespect me?" will return a more focused result than a single word like "calm" or "respect."
+</Tip>
+
+<Tip>
+  If the result doesn't resonate, **rephrase and try again**. For example, instead of typing "peace," try "How do I stay calm under pressure?" or "How do I stop my mind from racing?" Different phrasings surface different verses, and any of them might be the one that speaks to you.
+</Tip>
+
+<Tip>
+  You are not limited to life questions. You can search with a **mood, a theme, or even a short quote** — GitaChat will find the closest teaching the Gita has to offer.
+</Tip>
+
+## Related verses
+
+Below every primary result, GitaChat shows up to **three related verses** — the next-closest matches from the search. These verses were nearly as relevant as the top result and often approach the same teaching from a different angle.
+
+Click any related verse card to navigate to its full page, where you can read its complete translation, commentary, and use all the same verse actions (bookmark, share, visualize).
+
+<Info>
+  GitaChat enforces a limit of 30 searches per minute per user to ensure the service stays fast and available for everyone.
+</Info>

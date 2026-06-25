@@ -1,0 +1,71 @@
+---
+title: "Frequently Asked Questions About Drift"
+sidebarTitle: "FAQ"
+description: "Answers to the most common questions about Drift's Monte Carlo simulation, bank connections, AI advisor, and account management."
+---
+
+If you have a question about how Drift works, you are likely not the first to ask it. This page collects the most common questions about the simulation engine, bank connections, the AI advisor, and account management. If you do not find your answer here, check the [Troubleshooting](/support/troubleshooting) page or reach out to support.
+
+<AccordionGroup>
+
+  <Accordion title="What is a Monte Carlo simulation?">
+    A Monte Carlo simulation runs your financial scenario thousands of times, each with slightly different random outcomes for income, spending, and market returns. In each run, Drift models a plausible future — one where you get a raise, another where an unexpected expense hits, another where the market underperforms for two years in a row.
+
+    The percentage of runs in which you reach your savings goal by your deadline is your **success probability**. If Drift shows 73%, it means that in 73,000 of the 100,000 simulated futures, you hit your goal on time. The remaining 27,000 simulations represent the scenarios where unexpected headwinds caused you to fall short.
+  </Accordion>
+
+  <Accordion title="How accurate is Drift's simulation?">
+    Accuracy depends primarily on the quality of the financial data powering your simulation.
+
+    - **With Plaid-connected real accounts:** Drift analyzes your actual income, spending patterns, debt balances, interest rates, and investment allocation. This produces highly personalized volatility and return estimates, making the simulation significantly more precise.
+    - **With Nessie sandbox or manual input:** Estimates are based on the values you provide rather than observed behavior. Results are still statistically valid, but they reflect your inputs rather than your actual financial patterns.
+
+    In both cases, more historical data improves accuracy. Drift uses the most recent 90 days of transactions to model spending volatility and income stability — longer transaction histories produce more reliable volatility estimates.
+  </Accordion>
+
+  <Accordion title="Does Drift have access to move money in my accounts?">
+    No. Drift uses Plaid's **read-only** access scope. It can view your account balances and transaction history, but it cannot initiate payments, transfers, withdrawals, or any other account actions. Your money is never at risk from a Drift connection.
+
+    You can verify this in Plaid's privacy portal at any time, and you can revoke Drift's access from your bank's third-party app settings or directly from the Drift dashboard.
+  </Accordion>
+
+  <Accordion title="What does success probability mean?">
+    Success probability is the share of simulated futures in which you reach your goal amount within your specified timeline.
+
+    If Drift shows **73% probability**, it means:
+    - In **73,000 of 100,000** simulated futures, your savings balance crossed your goal amount by your deadline.
+    - In **27,000 simulations**, a combination of events — an income drop, a large unexpected expense, a market downturn — meant your balance fell short by the deadline.
+
+    A 73% probability does not mean you are guaranteed to fail 27% of the time. It reflects the statistical likelihood across a wide range of plausible financial scenarios, given your current income, spending, and investment profile.
+  </Accordion>
+
+  <Accordion title="What is the p10/p90 range?">
+    The p10 and p90 are the **10th and 90th percentile outcomes** across all 100,000 simulations.
+
+    - **p10** is your floor in a bad scenario — the balance you end up with if things go poorly. Only 10% of simulated futures produce a result this low or lower.
+    - **p90** is your ceiling in a good scenario — the balance in the best 10% of futures, where income grew steadily, markets performed well, and no major emergencies hit.
+
+    A **wide gap** between p10 and p90 indicates high uncertainty — your actual outcome could vary a lot depending on what the market and life events throw at you. A **narrow gap** means your outcomes are more predictable regardless of market conditions, which is typical for low-risk, short-timeline goals.
+  </Accordion>
+
+  <Accordion title="Can I run multiple goals?">
+    Yes. Each goal runs as an independent simulation with its own target amount, timeline, and risk profile. You can save results from multiple goals and compare them side by side from your dashboard.
+
+    Common uses include modeling competing priorities — for example, running "Pay off student loans in 3 years" alongside "Save for a house down payment in 5 years" to understand which is more achievable given your current financial picture.
+  </Accordion>
+
+  <Accordion title="How do I update my financial data?">
+    If you are using Plaid, you can trigger a data re-sync directly from the **Accounts** section of your dashboard. Click **Sync now** next to any linked account, and Drift will pull your most recent 90 days of transactions, update your income and spending estimates, and flag any accounts that may need re-authentication.
+
+    After syncing, re-run any active simulations to apply the refreshed data to your results.
+
+    If you are using the Nessie sandbox, your data is simulated and does not change unless you re-link or reset your sandbox account.
+  </Accordion>
+
+  <Accordion title="What is the Nessie sandbox?">
+    The Capital One Nessie sandbox is a simulated banking environment that provides realistic account structures, balances, and transaction histories without requiring real account credentials. Drift uses Nessie as its default data source for users who have not yet connected a real bank account.
+
+    Nessie lets you explore every feature of Drift — including simulations, what-if analysis, and the AI advisor — without exposing any real financial information. When you are ready for more accurate results based on your actual finances, you can connect a real account via Plaid from the Accounts section of your dashboard.
+  </Accordion>
+
+</AccordionGroup>

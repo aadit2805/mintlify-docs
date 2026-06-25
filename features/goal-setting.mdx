@@ -1,0 +1,60 @@
+---
+title: "Set Financial Goals with Voice or Text in Drift"
+sidebarTitle: "Goal Setting"
+description: "Describe your financial goal in plain English or by voice. Drift's AI extracts the target amount, timeline, and parameters automatically — no forms needed."
+---
+
+Drift doesn't ask you to fill out a form with numbers you may not know off the top of your head. Instead, you describe what you're trying to accomplish — in plain English, typed or spoken — and Gemini AI pulls out the goal parameters automatically. Tell Drift you want to save for a house down payment, and it figures out the amount, the timeline, and how to classify the goal. You never touch a spreadsheet.
+
+## Text input
+
+Type your goal in natural language in the goal input field. Drift parses it with Gemini and kicks off the simulation immediately once the key parameters are confirmed.
+
+```text Goal examples
+Save $50,000 for a house down payment in 3 years
+Pay off $15,000 in credit card debt in 18 months
+Build a $100,000 emergency fund in 5 years
+Retire comfortably in 30 years
+Save $8,000 for a vacation by next December
+Pay off my student loans in 4 years
+```
+
+If your input is ambiguous — for example, "buy a car" without a price — Drift asks a clarifying question rather than guessing. For example: *"A car can range widely in price. Did you have a target amount in mind, like $25,000 or $40,000?"* You can answer inline and continue without re-typing your original goal.
+
+<Tip>
+  The more specific your goal, the more accurate the simulation. Always include a dollar amount and a timeframe — "save $30,000 in 2 years" produces a sharper result than "save for a car."
+</Tip>
+
+## Voice input
+
+Click the microphone on the goal page and speak your goal out loud. Drift handles the full speech-to-simulation pipeline automatically.
+
+<Steps>
+  <Step title="Speak your goal">
+    Click the mic button and describe your goal in a natural sentence. ElevenLabs transcribes your speech to text in real time.
+  </Step>
+  <Step title="AI parses the parameters">
+    Gemini reads the transcript and extracts your target amount, timeline, and goal type. If it needs a clarification, it asks a single follow-up question — spoken back to you in audio.
+  </Step>
+  <Step title="Confirm and simulate">
+    Once Drift has all three parameters, it summarizes what it understood — *"Got it: $50,000 for a house down payment in 3 years. Let's see what your odds look like!"* — and automatically launches the simulation.
+  </Step>
+</Steps>
+
+The voice conversation is multi-turn: Drift can ask and answer up to several follow-up questions before all parameters are locked in. You never have to restart because you forgot to mention the amount or the timeline.
+
+## What Drift extracts from your goal
+
+Regardless of whether you type or speak, Drift extracts the same three structured parameters before running the simulation.
+
+| Field | Description | Example |
+|---|---|---|
+| **Target amount** | The dollar figure you need to reach | `$50,000` |
+| **Timeline** | How many months you have to reach it | `36 months` (3 years) |
+| **Goal type** | How the goal is classified internally | `major_purchase`, `debt_payoff`, `emergency_fund`, `retirement`, `travel`, `education`, `investment`, `custom` |
+
+These parameters drive every aspect of the simulation: success is defined as reaching the target amount within the timeline, and the goal type influences how Gemini frames its recommendations.
+
+<Note>
+  If Gemini can't confidently determine the target amount or timeline from your input, it sets a `needsClarification` flag and asks before proceeding. Drift will never silently substitute a placeholder amount for your real goal.
+</Note>

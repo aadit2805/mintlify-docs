@@ -1,0 +1,66 @@
+---
+title: "Risk Profiles: How Investment Risk Affects Your Simulation"
+sidebarTitle: "Risk Profiles"
+description: "Drift's three risk profiles — Low, Medium, and High — set the expected market return and variance used in your Monte Carlo simulations."
+---
+
+Your risk profile is one of the most influential settings in Drift. It tells the simulation engine what annual investment return to expect and how much that return might vary year to year. Because Drift runs 100,000 simulated financial futures, even a small change in expected return compounds significantly over time — which means the risk level you choose has a real effect on your success probability and the spread of possible outcomes.
+
+## The Three Profiles
+
+Drift offers three risk profiles, each calibrated to a different investment style and time horizon. These values come directly from the simulation engine's `from_risk_tolerance` configuration.
+
+| Profile | Annual Return (Mean) | Volatility (Std Dev) | Best For |
+|---|---|---|---|
+| **Low** | 4% | 8% | Conservative savers, short timelines (under 2 years) |
+| **Medium** | 7% | 15% | Balanced investors, 3–7 year goals |
+| **High** | 10% | 20% | Aggressive investors, 10+ year goals |
+
+The mean is the average annual return the simulation expects across all 100,000 runs. The standard deviation (volatility) controls how wide the random variation around that mean can be in any given year — a higher standard deviation means more dramatic swings in both directions.
+
+---
+
+## How Risk Affects Your Probability
+
+Choosing a higher risk profile does not simply increase your success probability. It widens your range of outcomes: the best-case scenarios get better, but the worst-case scenarios get worse. Here is what that looks like in practice:
+
+- **Low risk** produces a narrow band of outcomes. Your p10 and p90 will be close together, meaning most simulated futures land in a similar range. Your ceiling is lower, but so is your floor.
+- **Medium risk** produces a moderate spread. A meaningful number of simulations reach significantly above your goal, while a meaningful number fall short.
+- **High risk** produces a wide spread. In the best 10% of simulations you accumulate far more than your target. In the worst 10%, you may fall well short — especially over short timelines where there is not enough time for the market to recover from a downturn.
+
+### Understanding p10 and p90
+
+Every Drift results page shows your **p10** and **p90** alongside the median outcome:
+
+- **p10 (10th percentile)** is the balance you end up with in the worst 10% of simulated futures. Think of it as your floor if things go badly — market downturns, unexpected expenses, and income setbacks all hit at once.
+- **p90 (90th percentile)** is the balance in the best 10% of simulated futures — your ceiling if income grows steadily, markets perform well, and no major emergencies arise.
+
+A **wide gap** between p10 and p90 signals high uncertainty. A **narrow gap** means Drift expects your outcomes to cluster closely regardless of what the market does.
+
+---
+
+## Choosing Your Risk Profile
+
+Use your goal's time horizon as your primary guide:
+
+- **Short-term goals (under 2 years):** Choose **Low**. There is not enough time to recover from a market downturn. The lower ceiling is an acceptable trade-off for the predictability you need.
+- **Medium-term goals (2–7 years):** Choose **Medium**. You have enough runway to weather moderate volatility while still benefiting from market growth.
+- **Long-term goals (7+ years):** Choose **High** or **Medium**. Over a decade or more, higher volatility has time to average out, and the compounding benefit of a higher mean return becomes significant.
+
+<Tip>
+  When in doubt, pick Medium. You can always run the same goal at all three risk levels to compare — the what-if panel on your results page makes side-by-side comparison easy.
+</Tip>
+
+---
+
+## Changing Your Risk Profile
+
+You are not locked into a risk profile. Drift is designed for exploration.
+
+- **Change before running:** On the goal input screen (Step 1), select Low, Medium, or High before submitting your goal. The selection is saved to your profile as your new default.
+- **Change after running:** From your results page, open the **What-if Analysis** panel. You can toggle the risk level and immediately see how your success probability and outcome distribution shift — without re-entering your goal.
+- **Compare all three:** Run your goal three times, once at each risk level, and save each result. The results dashboard lets you view them side-by-side to understand the full range of possibilities.
+
+<Info>
+  If you have Plaid connected and your investment accounts include real allocation data (stocks, bonds, cash), Drift will derive return assumptions directly from your portfolio — overriding the profile defaults. The risk profile you select still anchors the baseline, but your actual allocation takes precedence.
+</Info>
