@@ -52,12 +52,10 @@ After all 100,000 runs complete, Drift aggregates the final balances and compute
 
 Immediately after your main simulation finishes, Drift automatically re-runs the engine with small parameter changes to identify which levers have the biggest impact on your odds.
 
-The following seven scenarios are tested in every analysis:
+The following scenarios are tested in every analysis:
 
 | Scenario | What changes |
 |---|---|
-| Income +10% | Monthly income multiplied by 1.1 |
-| Income −10% | Monthly income multiplied by 0.9 |
 | Spending −10% | Monthly spending multiplied by 0.9 |
 | Spending −20% | Monthly spending multiplied by 0.8 |
 | Spending +10% | Monthly spending multiplied by 1.1 |
@@ -72,4 +70,4 @@ Drift ranks these by absolute probability impact and surfaces the highest-impact
 
 ## Performance
 
-Drift uses NumPy vectorized math and distributes work across parallel CPU workers, so all 100,000 runs complete in approximately **500 milliseconds** on a standard server — fast enough that you can iterate on scenarios without waiting.
+Drift uses vectorized math and parallel processing, so all 100,000 runs complete in approximately **500 milliseconds** — fast enough that you can iterate on scenarios without waiting.

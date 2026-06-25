@@ -1,22 +1,22 @@
 ---
 title: "AI Financial Advisor: Voice and Chat in Drift"
 sidebarTitle: "AI Advisor"
-description: "Drift's AI advisor, powered by Gemini and ElevenLabs, explains your simulation results by voice and answers follow-up questions about your financial plan."
+description: "Drift's AI advisor explains your simulation results by voice and answers follow-up questions about your financial plan in plain, personalized language."
 ---
 
-Drift's AI advisor is a conversational financial coach that's present at every step — from the moment you describe your goal to the moment you're reading your results. It's powered by Gemini 2.0 Flash for reasoning and ElevenLabs for voice, and it has full context about your accounts, income, spending patterns, and simulation output. Ask it anything about your plan and it answers in plain language, not jargon.
+Drift's AI advisor is a conversational financial coach that's present at every step — from the moment you describe your goal to the moment you're reading your results. It has full context about your accounts, income, spending patterns, and simulation output. Ask it anything about your plan and it answers in plain language, not jargon.
 
 ## Goal conversation
 
-When you set a goal by voice, Gemini doesn't just listen once and guess — it guides a multi-turn conversation to make sure every required parameter is captured before the simulation starts.
+When you set a goal by voice, Drift's advisor doesn't just listen once and guess — it guides a multi-turn conversation to make sure every required parameter is captured before the simulation starts.
 
-- Gemini opens with a short, friendly prompt and waits for you to describe your goal in your own words.
-- If the goal is missing the target amount, timeline, or goal type, Gemini asks one focused question at a time: *"Nice — how much are you thinking for the down payment?"* then *"And when are you hoping to buy?"*
-- Once all three parameters are confirmed, Gemini summarizes what it understood: *"Perfect — $50,000 for a house down payment in 3 years. Let's see what your odds look like!"* The simulation starts immediately.
+- The advisor opens with a short, friendly prompt and waits for you to describe your goal in your own words.
+- If the goal is missing the target amount, timeline, or goal type, it asks one focused question at a time: *"Nice — how much are you thinking for the down payment?"* then *"And when are you hoping to buy?"*
+- Once all three parameters are confirmed, the advisor summarizes what it understood: *"Perfect — $50,000 for a house down payment in 3 years. Let's see what your odds look like!"* The simulation starts immediately.
 - Every response is kept to one or two sentences so the conversation moves quickly whether you're typing or listening.
 
 <Note>
-  The goal conversation is backed by a full conversation history. If you change your mind mid-conversation — "actually, make it $60,000" — Gemini updates the extracted parameters without losing the rest of the context.
+  The goal conversation maintains a full history of the exchange. If you change your mind mid-conversation — "actually, make it $60,000" — the advisor updates the extracted parameters without losing the rest of the context.
 </Note>
 
 ## Results advisor
@@ -51,13 +51,13 @@ The advisor supports full voice interaction, not just text.
 
 <Steps>
   <Step title="Open the chat panel">
-    Click **Chat with Advisor** on the results page. The panel opens with an initial message from the advisor summarizing that it has reviewed your results.
+    Click **Chat with Advisor** on the results page. The panel opens with an initial message from the advisor confirming it has reviewed your results.
   </Step>
   <Step title="Click the microphone to speak">
-    Press the mic button and ask your question out loud. ElevenLabs transcribes your speech and sends the transcript to Gemini for processing.
+    Press the mic button and ask your question out loud. Drift transcribes your speech and processes your question.
   </Step>
   <Step title="Hear the response">
-    The advisor's reply appears as text in the chat and is simultaneously read aloud by ElevenLabs. A pulsing speaker icon indicates when audio is playing.
+    The advisor's reply appears as text in the chat and is simultaneously read aloud. A pulsing speaker icon indicates when audio is playing.
   </Step>
   <Step title="Continue the conversation">
     Ask follow-up questions — voice or text — and the advisor maintains the full conversation history. Each response takes your previous questions and its own prior answers into account.

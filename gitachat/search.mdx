@@ -13,14 +13,14 @@ GitaChat understands what you mean, not just what you type. Instead of scanning 
     Enter a question, thought, or feeling in the search box on the home page. The placeholder reads *"What is troubling you?"* — treat it as an invitation to be honest and specific.
   </Step>
   <Step title="Submit your query">
-    Press **Enter** or click the **Ask** button to begin the search. GitaChat sends your question to the backend and shows a brief "Seeking…" indicator while it works.
+    Press **Enter** or click the **Ask** button to begin the search. GitaChat shows a brief "Seeking…" indicator while it works.
   </Step>
   <Step title="Read your results">
     GitaChat returns the single best-matching verse along with its commentary. Scroll down to find up to three related verses that were close matches, giving you broader context.
   </Step>
 </Steps>
 
-## How search works under the hood
+## How search works
 
 You don't need to understand the mechanics to use GitaChat, but here's what happens when you ask a question:
 
@@ -29,7 +29,7 @@ You don't need to understand the mechanics to use GitaChat, but here's what happ
     GitaChat converts your question into a high-dimensional numerical representation called an **embedding**. This embedding captures the semantic meaning of what you wrote, not just individual words.
   </Accordion>
   <Accordion title="Step 2 — All 700 verses are compared">
-    Every verse in the Bhagavad Gita has been pre-embedded and stored in a vector database (Pinecone). GitaChat computes the similarity between your question's embedding and each verse's embedding, retrieving the top candidates ranked by meaning.
+    Every verse in the Bhagavad Gita has been pre-embedded and stored in a vector database. GitaChat computes the similarity between your question's embedding and each verse's embedding, retrieving the top candidates ranked by meaning.
   </Accordion>
   <Accordion title="Step 3 — Keyword relevance adds a boost">
     In addition to semantic similarity, GitaChat applies a lightweight keyword-matching pass. If your query terms appear in the verse translation or commentary, that verse receives a small relevance boost — combining the best of both approaches.

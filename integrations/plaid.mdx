@@ -21,7 +21,10 @@ Drift imports data from four categories of accounts. You can link any combinatio
 
 <Steps>
   <Step title="Open the login screen and click 'Connect Bank'">
-    On the Drift sign-in page, select the **Connect Bank** tab. Then click the **Connect with Plaid** button to open the Plaid Link interface.
+    On the Drift sign-in page, select the **Connect Bank** tab. A secure bank connection panel will appear with a description of how Plaid protects your credentials.
+  </Step>
+  <Step title="Click 'Connect Bank Account'">
+    Click the **Connect Bank Account** button to open the Plaid Link interface directly in the browser.
   </Step>
   <Step title="Select your bank">
     Search for and select your financial institution from Plaid's list of supported banks and credit unions.
@@ -65,7 +68,7 @@ Drift uses your imported data to derive the parameters that drive your simulatio
 ## Data Privacy
 
 <Info>
-  Drift uses Plaid's read-only access token. Drift cannot initiate transactions, transfers, or payments on your behalf — ever. Your bank credentials are entered directly into Plaid's interface and are never shared with or stored by Drift.
+  Drift requests read-only access to your accounts. Drift cannot initiate transactions, transfers, or payments on your behalf — ever. Your bank credentials are entered directly into Plaid's interface and are never shared with or stored by Drift.
 </Info>
 
 Drift stores account metadata (account type, name, balance, and derived financial parameters like monthly income estimate and spending volatility) to power your dashboard and simulations. Drift does **not** store raw transaction data. Individual transactions are processed in memory to extract income and spending patterns, then discarded — only the derived metrics are retained.

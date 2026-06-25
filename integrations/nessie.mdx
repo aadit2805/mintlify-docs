@@ -4,7 +4,7 @@ sidebarTitle: "Nessie Sandbox"
 description: "Use the Capital One Nessie sandbox to try Drift with simulated bank accounts and transactions — no real bank connection required."
 ---
 
-The Capital One Nessie API is a developer sandbox that provides realistic but entirely fictional bank accounts, transaction histories, and loan data. If you want to explore Drift's simulation features before linking your real accounts — or if you're evaluating Drift without a supported bank — Nessie lets you connect instantly using a sandbox customer ID and start running simulations against a pre-built financial profile right away.
+The Capital One Nessie API is a developer sandbox that provides realistic but entirely fictional bank accounts, transaction histories, and loan data. If you want to explore Drift's simulation features before linking your real accounts — or if you're evaluating Drift without a supported bank — Nessie lets you connect instantly and start running simulations against a pre-built financial profile right away.
 
 ## What You Get with Nessie
 
@@ -29,13 +29,15 @@ When you connect through Nessie, Drift loads a complete sandbox financial profil
 
 <Steps>
   <Step title="Open the login screen and select Demo Mode">
-    On the Drift sign-in page, click the **Demo Mode** tab. You can enter a Nessie customer ID manually or choose one of the pre-built demo profiles.
+    On the Drift sign-in page, click the **Demo Mode** tab. You can either choose one of the three pre-built demo profiles displayed on screen, or enter your own Nessie customer ID manually.
   </Step>
-  <Step title="Enter your Nessie customer ID">
-    Paste your 24-character Capital One Nessie customer ID into the **Customer ID** field and click **Connect Account**. Drift validates the ID against the Nessie API before proceeding.
+  <Step title="Choose a demo profile or enter your own customer ID">
+    To get started instantly, click any of the pre-built demo profiles — each shows estimated salary, expenses, debt, and net worth so you can pick one that matches the scenario you want to explore. Drift validates the selection and connects automatically.
+
+    Alternatively, paste your own 24-character Capital One Nessie customer ID into the **Customer ID** field and click **Connect Account**. Drift validates the ID against the Nessie API before proceeding.
   </Step>
   <Step title="Drift loads your sandbox accounts">
-    Drift fetches all accounts and transaction history associated with your customer ID — checking, savings, purchases, deposits, bills, and loans — and builds your financial overview.
+    Drift fetches all accounts and transaction history associated with the customer ID — checking, savings, purchases, deposits, bills, and loans — and builds your financial overview.
   </Step>
   <Step title="Set a goal and run a simulation">
     Head to the dashboard to review your sandbox financial profile, then navigate to the goal screen to set a target amount, timeline, and risk tolerance. Drift runs your Monte Carlo simulation against the Nessie data exactly as it would with a real bank connection.
@@ -61,5 +63,5 @@ Use this table to decide which connection method fits your needs.
 </Tip>
 
 <Info>
-  To get a Nessie customer ID, sign up at the [Capital One Nessie developer portal](http://www.nessieisreal.com). Once you create a customer and seed it with accounts, use the returned customer ID to connect in Drift's Demo Mode.
+  To use your own Nessie customer ID, sign up at the [Capital One Nessie developer portal](http://www.nessieisreal.com). Once you create a customer and seed it with accounts, use the returned customer ID to connect in Drift's Demo Mode. If you just want to explore Drift quickly, skip this step and use one of the pre-built demo profiles instead.
 </Info>

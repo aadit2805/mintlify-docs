@@ -39,7 +39,7 @@ When you connect real accounts through Plaid, Drift upgrades from generic estima
 
 **Loans** — Each loan (student, auto, mortgage, personal) is tracked with its own balance, interest rate, and fixed monthly payment. The engine runs a standard amortization schedule: each month's payment covers accrued interest first, then reduces principal. As principal shrinks, the share going to interest falls, accurately reflecting how real loan payoff works.
 
-**Investment accounts** — When you hold investment accounts (401(k), IRA, brokerage), Drift reads your actual allocation (stocks / bonds / cash / other) and derives expected return and volatility from historical asset-class averages rather than using a fixed 7% assumption.
+**Investment accounts** — When you hold investment accounts (401(k), IRA, brokerage), Drift reads your actual allocation (stocks / bonds / cash / other) and derives expected return and volatility from historical asset-class averages rather than using a fixed assumption.
 
 This level of detail produces materially more accurate probability estimates than tools that use generic averages—especially if you carry high-APR credit card debt or are mid-way through a large loan.
 
@@ -66,8 +66,8 @@ Use the sensitivity table to focus your energy on the changes that actually move
 
 ## AI features
 
-Drift integrates Google Gemini and ElevenLabs at two points in the workflow:
+Drift integrates AI at two points in the workflow:
 
-**Goal parsing** — When you type or speak a goal like "Pay off my student loans in 4 years," Gemini parses it into structured parameters (`targetAmount`, `timelineMonths`, `goalType`) and returns a confidence score. Drift displays the parsed result for you to confirm before running the simulation.
+**Goal parsing** — When you type or speak a goal like "Pay off my student loans in 4 years," Drift's AI parses it into structured parameters (`targetAmount`, `timelineMonths`, `goalType`) and returns a confidence score. Drift displays the parsed result for you to confirm before running the simulation.
 
-**Voice advisor** — After results load, Gemini generates a plain-language narrative that explains your success probability, highlights the most impactful sensitivity factors, and surfaces actionable recommendations. ElevenLabs converts that narrative to audio using a consistent conversational voice. You can also ask follow-up questions in a back-and-forth voice chat—Gemini maintains conversation context and has full access to your simulation results and financial profile while answering.
+**Voice advisor** — After results load, an AI advisor generates a plain-language narrative that explains your success probability, highlights the most impactful sensitivity factors, and surfaces actionable recommendations—delivered as audio. You can also ask follow-up questions in a back-and-forth voice chat. The advisor maintains conversation context and has full access to your simulation results and financial profile while answering.

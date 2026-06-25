@@ -1,13 +1,13 @@
 ---
 title: "What-If Scenarios: Adjust Your Financial Plan in Drift"
 sidebarTitle: "What-If"
-description: "Use Drift's what-if sliders to model how changes in income, spending, or savings rate affect your probability of reaching a financial goal."
+description: "Use Drift's what-if scenarios to model how changes in spending or timeline affect your probability of reaching a financial goal."
 ---
 
-Your first simulation result is a starting point, not a verdict. The What-If panel lets you push individual variables — income, spending, timeline, risk tolerance — and instantly see how each change shifts your probability of success. Instead of wondering whether a raise or a spending cut matters more, you get the exact answer expressed as a probability change, ranked by impact.
+Your first simulation result is a starting point, not a verdict. The What-If panel lets you push individual variables — spending and timeline — and instantly see how each change shifts your probability of success. Instead of wondering whether a budget cut or more time matters more, you get the exact answer expressed as a probability change, ranked by impact.
 
 <Info>
-  What-if scenarios run the same 100,000-simulation engine as your original simulation. Every probability figure in the panel reflects a full Monte Carlo run against your adjusted parameters — not an estimate or a linear approximation.
+  What-if scenarios run the same full simulation engine as your original simulation. Every probability figure in the panel reflects a complete Monte Carlo run against your adjusted parameters — not an estimate or a linear approximation.
 </Info>
 
 ## Available adjustments
@@ -16,8 +16,6 @@ Drift tests the following scenario types automatically after every simulation, a
 
 | Adjustment | What it models |
 |---|---|
-| **Income +10%** | Monthly income increased by 10% — equivalent to a raise, a new client, or a side income stream |
-| **Income −10%** | Monthly income reduced by 10% — models the effect of a pay cut or reduced hours |
 | **Spending −10%** | Monthly spending reduced by 10% — the result of trimming discretionary categories |
 | **Spending −20%** | Monthly spending reduced by 20% — a more aggressive budget tightening |
 | **Spending +10%** | Monthly spending increased by 10% — shows the cost of lifestyle creep on your plan |
@@ -57,5 +55,5 @@ The What-If table always shows your **current plan** as the baseline row, so eve
 A positive impact badge — for example, `+14%` — means making that change raises your success probability by 14 percentage points. If your baseline is 58%, that adjustment takes you to 72%.
 
 <Tip>
-  Compare the income and spending scenarios side by side. In most plans, one of the two dominates — meaning there's a clear answer to "should I earn more or spend less?" that's specific to your numbers.
+  If you have Plaid-linked accounts, compare the category-level scenarios against the aggregate spending scenarios. Often, a targeted cut to one high-spend category produces a larger improvement than an across-the-board reduction — and is easier to act on.
 </Tip>

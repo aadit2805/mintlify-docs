@@ -8,18 +8,18 @@ By the end of this guide you'll have a live simulation running against your real
 
 <Steps>
   <Step title="Visit Drift and log in">
-    Open Drift in your browser and navigate to the login page. You have two options:
+    Open Drift in your browser and go to the login page. You have two options:
 
-    - **Plaid login** — links your real bank accounts. Drift uses Plaid's secure OAuth flow so your credentials never touch Drift's servers.
-    - **Nessie sandbox login** — uses Capital One's Nessie API with pre-seeded demo data. Choose this if you want to explore Drift without connecting a live bank.
+    - **Connect Bank (Plaid)** — links your real bank accounts. Drift uses Plaid's secure OAuth flow so your credentials never touch Drift's servers.
+    - **Demo Mode (Nessie)** — uses the Capital One Nessie API sandbox with pre-seeded demo accounts. Choose this if you want to explore Drift without connecting a live bank.
 
-    After authenticating, Drift stores a session token locally and redirects you to the goal-setting screen.
+    After authenticating, Drift saves your session locally and takes you to your dashboard.
   </Step>
 
   <Step title="Connect your bank">
     If you chose Plaid, the Plaid Link modal opens automatically. Select your institution, complete the OAuth flow, and Drift retrieves your checking and savings balances, credit card details (including APRs and minimum payments), loan schedules, and spending history.
 
-    If you chose Nessie, your sandbox accounts are loaded immediately—no extra steps needed.
+    If you chose Demo Mode, a pre-seeded account is loaded immediately—no extra steps needed.
 
     <Tip>
       The more account types you connect, the more accurate your simulation. Credit card APRs and loan amortization schedules have a measurable effect on your projected balances.
@@ -27,15 +27,15 @@ By the end of this guide you'll have a live simulation running against your real
   </Step>
 
   <Step title="Set your goal">
-    On the goal screen, enter your age, risk tolerance (low / medium / high), and your goal. You can type or speak it:
+    On the goal screen, enter your age and risk tolerance (low / medium / high), then describe your goal. You can type or speak it:
 
     > *"Save $50,000 for a house down payment in 3 years"*
 
-    Gemini AI parses your natural-language input into a structured goal: target amount, timeline in months, and goal type. A confidence score appears alongside the parsed result—review it and adjust if needed before continuing.
+    Drift's AI parses your natural-language input into a structured goal: target amount, timeline in months, and goal type. A confidence score appears alongside the parsed result—review it and adjust if needed before continuing.
   </Step>
 
   <Step title="Run the simulation">
-    Click **Run Simulation**. The Python engine spins up 100,000 independent Monte Carlo runs distributed across CPU cores. Each run models:
+    After confirming your goal, Drift launches the simulation automatically. The Python engine runs 100,000 independent Monte Carlo paths distributed across CPU cores. Each path models:
 
     - Monthly income with variance, annual raises, and semi-annual promotion chances
     - Monthly spending with inflation and category-level volatility
@@ -51,8 +51,8 @@ By the end of this guide you'll have a live simulation running against your real
     - **Success probability** — the percentage of simulations where you hit your goal
     - **Percentile bands** — your balance at the 10th, 25th, 50th, 75th, and 90th percentile at the target date
     - **Sensitivity analysis** — ranked table showing how ±10% income, ±10% spending, or +6/+12 months changes your odds
-    - **What-if scenarios** — interactive sliders to explore alternative futures
-    - **AI voice briefing** — tap the play button to hear Gemini explain your results and answer follow-up questions via voice
+    - **What-if scenarios** — interactive view to explore alternative futures
+    - **AI voice briefing** — tap the play button to hear an AI advisor explain your results and answer follow-up questions via voice
   </Step>
 </Steps>
 

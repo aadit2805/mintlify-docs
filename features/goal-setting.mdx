@@ -1,14 +1,14 @@
 ---
 title: "Set Financial Goals with Voice or Text in Drift"
 sidebarTitle: "Goal Setting"
-description: "Describe your financial goal in plain English or by voice. Drift's AI extracts the target amount, timeline, and parameters automatically — no forms needed."
+description: "Describe your financial goal in plain English or by voice. Drift's AI extracts the target amount, timeline, and goal type automatically — no forms needed."
 ---
 
-Drift doesn't ask you to fill out a form with numbers you may not know off the top of your head. Instead, you describe what you're trying to accomplish — in plain English, typed or spoken — and Gemini AI pulls out the goal parameters automatically. Tell Drift you want to save for a house down payment, and it figures out the amount, the timeline, and how to classify the goal. You never touch a spreadsheet.
+Drift doesn't ask you to fill out a form with numbers you may not know off the top of your head. Instead, you describe what you're trying to accomplish — in plain English, typed or spoken — and Drift's AI pulls out the goal parameters automatically. Tell Drift you want to save for a house down payment, and it figures out the amount, the timeline, and how to classify the goal. You never touch a spreadsheet.
 
 ## Text input
 
-Type your goal in natural language in the goal input field. Drift parses it with Gemini and kicks off the simulation immediately once the key parameters are confirmed.
+Type your goal in natural language in the goal input field. Drift parses it and kicks off the simulation immediately once the key parameters are confirmed.
 
 ```text Goal examples
 Save $50,000 for a house down payment in 3 years
@@ -31,10 +31,10 @@ Click the microphone on the goal page and speak your goal out loud. Drift handle
 
 <Steps>
   <Step title="Speak your goal">
-    Click the mic button and describe your goal in a natural sentence. ElevenLabs transcribes your speech to text in real time.
+    Click the mic button and describe your goal in a natural sentence. Drift transcribes your speech to text in real time.
   </Step>
   <Step title="AI parses the parameters">
-    Gemini reads the transcript and extracts your target amount, timeline, and goal type. If it needs a clarification, it asks a single follow-up question — spoken back to you in audio.
+    Drift reads the transcript and extracts your target amount, timeline, and goal type. If it needs a clarification, it asks a single follow-up question — spoken back to you in audio.
   </Step>
   <Step title="Confirm and simulate">
     Once Drift has all three parameters, it summarizes what it understood — *"Got it: $50,000 for a house down payment in 3 years. Let's see what your odds look like!"* — and automatically launches the simulation.
@@ -51,10 +51,10 @@ Regardless of whether you type or speak, Drift extracts the same three structure
 |---|---|---|
 | **Target amount** | The dollar figure you need to reach | `$50,000` |
 | **Timeline** | How many months you have to reach it | `36 months` (3 years) |
-| **Goal type** | How the goal is classified internally | `major_purchase`, `debt_payoff`, `emergency_fund`, `retirement`, `travel`, `education`, `investment`, `custom` |
+| **Goal type** | How your goal is categorized | House down payment, debt payoff, emergency fund, retirement, travel, education, investment, or a custom goal |
 
-These parameters drive every aspect of the simulation: success is defined as reaching the target amount within the timeline, and the goal type influences how Gemini frames its recommendations.
+These parameters drive every aspect of the simulation: success is defined as reaching the target amount within the timeline, and the goal type helps Drift frame its recommendations in context.
 
 <Note>
-  If Gemini can't confidently determine the target amount or timeline from your input, it sets a `needsClarification` flag and asks before proceeding. Drift will never silently substitute a placeholder amount for your real goal.
+  If Drift can't confidently determine the target amount or timeline from your input, it asks a clarifying question before proceeding. Drift will never silently substitute a placeholder amount for your real goal.
 </Note>

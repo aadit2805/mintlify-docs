@@ -4,13 +4,13 @@ sidebarTitle: "Introduction"
 description: "GitaChat finds the most relevant Bhagavad Gita verses for any life question using semantic AI search, with dual AI and traditional commentary."
 ---
 
-GitaChat lets you bring any question — about fear, purpose, duty, or grief — to one of the world's most enduring wisdom texts and receive guidance drawn directly from it. Unlike a keyword search that hunts for matching words, GitaChat understands the *meaning* of what you ask. It converts your question into a semantic embedding and searches across all 700 verses of the Bhagavad Gita to surface the one that genuinely speaks to your situation. Alongside that verse you receive two layers of commentary: an AI-generated reflection written specifically for the question you asked, and the authentic traditional scholarly interpretation — so you always see both the living relevance and the original meaning of the teaching.
+GitaChat lets you bring any question — about fear, purpose, duty, or grief — to one of the world's most enduring wisdom texts and receive guidance drawn directly from it. Unlike a keyword search that hunts for matching words, GitaChat understands the *meaning* of what you ask. It converts your question into a semantic vector embedding and searches across all 700 verses of the Bhagavad Gita to surface the one that genuinely speaks to your situation. Alongside that verse you receive two layers of commentary: an AI-generated reflection written specifically for the question you asked, and the authentic traditional scholarly interpretation — so you always see both the living relevance and the original meaning of the teaching.
 
 ## Key Features
 
 <CardGroup cols={2}>
   <Card title="Semantic Search" icon="magnifying-glass">
-    Find the most relevant verse by the *meaning* of your question, not by matching individual keywords. GitaChat uses the BGE sentence-transformer model and Pinecone vector search to rank all 700 verses against what you actually want to know.
+    Find the most relevant verse by the *meaning* of your question, not by matching individual keywords. GitaChat uses an AI sentence-transformer model to rank all 700 verses against what you actually want to know.
   </Card>
   <Card title="AI Commentary" icon="wand-magic-sparkles">
     Every search result includes a commentary written in response to your exact question. The guidance you read is not generic — it is tailored to the specific concern, emotion, or dilemma you brought to the text.
@@ -18,11 +18,17 @@ GitaChat lets you bring any question — about fear, purpose, duty, or grief —
   <Card title="Traditional Commentary" icon="book-open">
     Alongside the AI reflection, GitaChat surfaces the classical scholarly commentary on each verse, giving you the authentic interpretation that has accompanied the Gita for centuries.
   </Card>
+  <Card title="Related Verses" icon="list">
+    After your best-match verse, GitaChat shows you additional verses that are semantically close to your question, so you can explore the full breadth of the Gita's teaching on a topic.
+  </Card>
   <Card title="Daily Verse" icon="sun">
     A new verse is selected each day with its own commentary. Visit GitaChat on any day to receive a fresh teaching without needing to ask a question.
   </Card>
   <Card title="Bookmarks" icon="bookmark">
     Save any verse you want to return to. Signed-in users have their bookmarks stored permanently across devices so nothing is ever lost.
+  </Card>
+  <Card title="Personal Notes" icon="pen">
+    Add your own private reflections to any verse. Notes are saved to your account and available whenever you revisit that verse.
   </Card>
   <Card title="Image Generation" icon="image">
     Generate a piece of visual art inspired by any verse. Share the image or keep it as a personal reminder of the teaching that resonated with you.
